@@ -1,10 +1,13 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // --- Kode Toggle Menu Mobile ---
+document.addEventListener('DOMContentLoaded', () => {
+    // Cari elemen menu burger (ikon ☰)
     const menuToggle = document.getElementById('menuToggle');
+    // Cari elemen navigasi mobile (menu yang tersembunyi)
     const mobileNav = document.getElementById('mobileNav');
-    
+
     if (menuToggle && mobileNav) {
-        menuToggle.addEventListener('click', function() {
+        menuToggle.addEventListener('click', () => {
+            // Ketika menuToggle diklik, tambahkan/hapus class 'open' pada mobileNav
+            // Class 'open' ini yang akan membuat menu terlihat/tersembunyi di CSS
             mobileNav.classList.toggle('open');
         });
     }
@@ -52,4 +55,5 @@ document.addEventListener('DOMContentLoaded', function() {
             },
         });
     }
+
 });
