@@ -66,14 +66,14 @@ header h1 {
 }
 
 .desktop-nav {
-    display: flex;
+    display: flex; /* Menggunakan flexbox untuk tata letak yang rapi */
     align-items: center;
 }
 
 .desktop-nav a {
     color: var(--light-text);
-    padding: 6px 15px;
-    margin-right: 10px;
+    padding: 6px 15px; /* Menambah padding untuk area klik yang lebih baik */
+    margin-right: 10px; /* Jarak antar item navigasi */
     font-weight: 400;
     display: inline-block;
 }
@@ -91,24 +91,20 @@ header h1 {
     font-size: 0.9em;
     transition: background-color 0.3s, transform 0.2s;
     text-transform: uppercase;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin-left: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Menambah bayangan */
+    margin-left: 10px; /* Jarak dari item nav terakhir */
 }
 .cta-nav:hover {
-    background-color: #DDAA77;
+    background-color: #DDAA77; 
     transform: translateY(-1px);
 }
 .menu-toggle {
     display: none;
     font-size: 1.5em;
     cursor: pointer;
-    color: var(--light-text); /* Pastikan ikon burger terlihat */
 }
-
-/* MOBILE NAVIGATION STYLING (PERBAIKAN FUNGSI BURGER) */
 .mobile-nav {
-    /* KRITIS: Disembunyikan secara default */
-    display: none; 
+    display: none;
     position: absolute;
     top: 60px;
     left: 0;
@@ -117,11 +113,11 @@ header h1 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 998;
     padding: 10px 0;
+    transition: transform 0.3s ease-out;
+    transform: translateY(-100%);
 }
-
-/* KRITIS: Ini yang membuat menu muncul saat JS menambahkan class 'open' */
 .mobile-nav.open {
-    display: block; 
+    transform: translateY(0);
 }
 .mobile-nav a {
     display: block;
@@ -132,7 +128,6 @@ header h1 {
 .mobile-nav a:last-child {
     border-bottom: none;
 }
-/* END MOBILE NAVIGATION STYLING */
 
 /* NOTIFIKASI RESELLER */
 #reseller-notification {
@@ -174,7 +169,7 @@ section {
 
 /* HERO SECTION */
 #hero {
-    background-image: url('assets/img/ruangan dapur dkk.jpeg');
+    background-image: url('assets/img/ruangan dapur dkk.jpeg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -183,14 +178,14 @@ section {
     padding: 150px 0;
     position: relative;
 }
-#hero::before {
+#hero::before { 
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4); 
     z-index: 1;
 }
 #hero .container {
@@ -210,28 +205,28 @@ section {
     text-shadow: 0 0 4px rgba(0,0,0,0.8);
 }
 
-.cta-button, .form-button {
+.cta-button, .form-button { 
     display: inline-block;
     background-color: var(--secondary-color);
     color: var(--dark-text) !important;
     padding: 12px 30px;
-    border-radius: 5px;
+    border-radius: 5px; 
     font-weight: 600;
     font-size: 1.1em;
     transition: background-color 0.3s, transform 0.2s;
     text-transform: uppercase;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2); 
     border: none;
     cursor: pointer;
 }
 .cta-button:hover, .form-button:hover {
-    background-color: #DDAA77;
+    background-color: #DDAA77; 
     transform: translateY(-2px);
 }
 .whatsapp-button {
-    background-color: #25D366 !important;
+    background-color: #25D366 !important; 
     color: white !important;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3); 
 }
 .whatsapp-button:hover {
     background-color: #128C7E !important;
@@ -251,10 +246,10 @@ section {
 }
 .feature-card {
     background-color: var(--light-text);
-    padding: 40px;
+    padding: 40px; 
     border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
     transition: transform 0.3s;
 }
 .feature-card:hover {
@@ -283,18 +278,18 @@ section {
     box-shadow: var(--shadow);
     padding: 30px;
     text-align: center;
-    min-height: 350px;
-    display: flex;
+    min-height: 350px; /* Meningkatkan min-height */
+    display: flex; 
     flex-direction: column;
     justify-content: space-between;
 }
 .product-card img {
-    display: block;
-    max-width: 100%;
+    display: block; 
+    max-width: 100%; 
     height: auto;
-    max-height: 200px;
-    object-fit: contain;
-    margin: 0 auto 15px auto;
+    max-height: 200px; /* Batas tinggi gambar */
+    object-fit: contain; 
+    margin: 0 auto 15px auto; 
 }
 .product-info {
     flex-grow: 1;
@@ -309,7 +304,7 @@ section {
 
 /* SWIPER CUSTOMIZATION (untuk produk.html) */
 .swiper {
-    padding-bottom: 50px;
+    padding-bottom: 50px; 
 }
 .swiper-slide {
     height: auto !important;
@@ -366,8 +361,8 @@ section {
 
 /* FOOTER */
 footer {
-    background-color: var(--primary-color);
-    color: var(--light-text);
+    background-color: var(--primary-color); 
+    color: var(--light-text); 
     padding: 40px 0 20px 0;
 }
 .footer-grid {
@@ -411,9 +406,7 @@ footer ul li a:hover {
         display: none;
     }
     .menu-toggle {
-        /* Tambahan: Pastikan ikon burger ada di kanan */
         display: block;
-        margin-left: auto; 
     }
     #hero {
         padding: 100px 0;
