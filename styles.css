@@ -54,7 +54,7 @@ header {
     padding: 10px 0;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 1000; /* Z-INDEX UTAMA */
     box-shadow: var(--shadow);
 }
 header .container {
@@ -75,10 +75,10 @@ header h1 {
 .desktop-nav a {
     color: var(--light-text);
     padding: 6px 15px;
-    margin-right: 20px; /* Diperluas untuk stabilitas menu */
+    margin-right: 20px;
     font-weight: 400;
     display: inline-block;
-    white-space: nowrap; /* KRITIS: Mencegah menu menyusut */
+    white-space: nowrap;
 }
 .desktop-nav a:hover {
     color: var(--secondary-color);
@@ -96,7 +96,7 @@ header h1 {
     text-transform: uppercase;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     margin-left: 10px;
-    white-space: nowrap; /* KRITIS: Mencegah tombol CTA menyusut */
+    white-space: nowrap;
 }
 .cta-nav:hover {
     background-color: #DDAA77;
@@ -114,12 +114,14 @@ header h1 {
     /* KRITIS: Disembunyikan secara default */
     display: none; 
     position: absolute;
-    top: 60px;
+    /* KRITIS PERBAIKAN: Mulai di bawah header + banner reseller */
+    top: 100px; 
     left: 0;
     width: 100%;
     background-color: var(--primary-color);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 998;
+    /* KRITIS PERBAIKAN: Lebih tinggi dari header (1000) dan banner (999) */
+    z-index: 1001; 
     padding: 10px 0;
 }
 
@@ -160,8 +162,8 @@ header h1 {
     font-weight: 600;
     font-size: 0.95em;
     position: sticky;
-    top: 60px; /* Turun 60px di bawah header */
-    z-index: 999;
+    top: 60px; /* Di bawah header */
+    z-index: 999; /* Di bawah header (1000) dan mobile nav (1001) */
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 .reseller-cta {
@@ -420,7 +422,7 @@ footer ul li a:hover {
 }
 
 /* ================================================= */
-/* ANIMASI FADE IN UNTUK EFEK SCROLL (New) */
+/* ANIMASI FADE IN UNTUK EFEK SCROLL */
 /* ================================================= */
 .fade-in {
     opacity: 0;
@@ -462,6 +464,11 @@ footer ul li a:hover {
     /* Mengubah produk grid menjadi 1 kolom saat mobile */
     .product-grid {
         grid-template-columns: 1fr;
+    }
+    /* Memastikan notifikasi reseller terlihat jelas di mobile */
+    #reseller-notification {
+        padding: 8px 15px;
+        font-size: 0.9em;
     }
 }
 @media (max-width: 480px) {
