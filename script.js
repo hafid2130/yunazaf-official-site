@@ -1,28 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // === 1. TOGGLE MENU MOBILE (Mobile Burger Menu) ===
+    // === 1. TOGGLE MENU MOBILE (Mobile Burger Menu) dan KONTROL BANNER ===
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
+    // Ambil elemen banner reseller
+    const resellerBanner = document.getElementById('reseller-notification'); 
 
     if (menuToggle && mobileNav) {
         menuToggle.addEventListener('click', () => {
-            // Ini akan menambahkan/menghapus class 'open' yang mengontrol tampilan menu
+            // 1. Toggle class 'open' pada mobileNav
             mobileNav.classList.toggle('open');
             
-            // Mengganti ikon burger menjadi 'X' saat terbuka
+            // 2. Kontrol tampilan banner reseller
             if (mobileNav.classList.contains('open')) {
-                menuToggle.innerHTML = '&#10005;'; // Ikon X
+                // Sembunyikan banner saat menu terbuka
+                if (resellerBanner) {
+                    resellerBanner.classList.add('hide-reseller-banner');
+                }
+                // Ganti ikon menjadi 'X'
+                menuToggle.innerHTML = '&#10005;'; 
             } else {
-                menuToggle.innerHTML = '&#9776;'; // Ikon Burger
+                // Tampilkan kembali banner saat menu tertutup
+                if (resellerBanner) {
+                    resellerBanner.classList.remove('hide-reseller-banner');
+                }
+                // Kembali ke ikon Burger
+                menuToggle.innerHTML = '&#9776;'; 
             }
         });
-        
+
         // Opsional: Menutup menu saat link di klik (hanya untuk mobile)
         document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 if (mobileNav.classList.contains('open')) {
                     mobileNav.classList.remove('open');
                     menuToggle.innerHTML = '&#9776;'; // Kembali ke ikon Burger
+                    // Tampilkan kembali banner setelah menu tertutup
+                    if (resellerBanner) {
+                        resellerBanner.classList.remove('hide-reseller-banner');
+                    }
                 }
             });
         });
