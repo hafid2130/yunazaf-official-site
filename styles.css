@@ -54,7 +54,7 @@ header {
     padding: 10px 0;
     position: sticky;
     top: 0;
-    z-index: 1000; /* Z-INDEX UTAMA */
+    z-index: 1000;
     box-shadow: var(--shadow);
 }
 header .container {
@@ -109,7 +109,7 @@ header h1 {
     color: var(--light-text); 
 }
 
-/* MOBILE NAVIGATION STYLING (PERBAIKAN FUNGSI BURGER) */
+/* MOBILE NAVIGATION STYLING */
 .mobile-nav {
     /* KRITIS: Disembunyikan secara default */
     display: none; 
@@ -165,6 +165,7 @@ header h1 {
     top: 60px; /* Di bawah header */
     z-index: 999; /* Di bawah header (1000) dan mobile nav (1001) */
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: opacity 0.3s, visibility 0.3s; /* Untuk animasi saat disembunyikan */
 }
 .reseller-cta {
     color: var(--primary-color) !important;
@@ -174,6 +175,13 @@ header h1 {
 }
 .reseller-cta:hover {
     color: var(--secondary-color) !important;
+}
+
+/* KRITIS: KELAS UNTUK MENYEMBUNYIKAN BANNER SAAT MENU TERBUKA */
+.hide-reseller-banner {
+    display: none !important;
+    opacity: 0;
+    visibility: hidden;
 }
 
 /* ================================================= */
