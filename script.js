@@ -1,18 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Cari elemen menu burger (ikon ☰)
+
+    // === 1. TOGGLE MENU MOBILE (Mobile Burger Menu) ===
     const menuToggle = document.getElementById('menuToggle');
-    // Cari elemen navigasi mobile (menu yang tersembunyi)
     const mobileNav = document.getElementById('mobileNav');
 
     if (menuToggle && mobileNav) {
         menuToggle.addEventListener('click', () => {
-            // Ketika menuToggle diklik, tambahkan/hapus class 'open' pada mobileNav
-            // Class 'open' ini yang akan membuat menu terlihat/tersembunyi di CSS
+            // Ini akan menambahkan/menghapus class 'open' yang mengontrol tampilan menu
             mobileNav.classList.toggle('open');
+            // Opsional: Mengganti ikon burger menjadi 'X' saat terbuka
+            if (mobileNav.classList.contains('open')) {
+                menuToggle.innerHTML = '&#10005;'; // Ikon X
+            } else {
+                menuToggle.innerHTML = '&#9776;'; // Ikon Burger
+            }
         });
     }
 
-    // --- Efek Fade In ---
+    // === 2. FADE-IN SCROLL ANIMATION ===
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.5 };
 
@@ -30,15 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });
-    
-    // --- INISIALISASI SWIPER SLIDER (Khusus untuk halaman produk.html) ---
-    
+
+    // === 3. INISIALISASI SWIPER SLIDER (Hanya Berjalan di produk.html) ===
+    // Memeriksa apakah elemen dengan class 'mySwiper' ada di halaman saat ini
     if (document.querySelector('.mySwiper') && typeof Swiper !== 'undefined') {
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
-            
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
