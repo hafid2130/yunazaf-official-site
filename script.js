@@ -8,12 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             // Ini akan menambahkan/menghapus class 'open' yang mengontrol tampilan menu
             mobileNav.classList.toggle('open');
-            // Opsional: Mengganti ikon burger menjadi 'X' saat terbuka
+            
+            // Mengganti ikon burger menjadi 'X' saat terbuka
             if (mobileNav.classList.contains('open')) {
                 menuToggle.innerHTML = '&#10005;'; // Ikon X
             } else {
                 menuToggle.innerHTML = '&#9776;'; // Ikon Burger
             }
+        });
+        
+        // Opsional: Menutup menu saat link di klik (hanya untuk mobile)
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('open')) {
+                    mobileNav.classList.remove('open');
+                    menuToggle.innerHTML = '&#9776;'; // Kembali ke ikon Burger
+                }
+            });
         });
     }
 
@@ -36,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         appearOnScroll.observe(fader);
     });
 
-    // === 3. INISIALISASI SWIPER SLIDER (Hanya Berjalan di produk.html) ===
+    // === 3. INISIALISASI SWIPER SLIDER (Jika Ada) ===
     // Memeriksa apakah elemen dengan class 'mySwiper' ada di halaman saat ini
     if (document.querySelector('.mySwiper') && typeof Swiper !== 'undefined') {
         var swiper = new Swiper(".mySwiper", {
