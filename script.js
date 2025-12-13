@@ -1,133 +1,123 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak Kami | YUNAZAF</title>
-    <meta name="description" content="Hubungi YUNAZAF untuk pertanyaan, pemesanan grosir, atau layanan pelanggan.">
-    <link rel="canonical" href="https://hafizd2130.github.io/yunazaf-official-site/kontak.html">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> 
-</head>
-<body>
+document.addEventListener('DOMContentLoaded', () => {
 
-    <header>
-    <div class="container">
-        <h1>YUNAZAF</h1>
-        <nav class="desktop-nav">
-                <a href="index.html">Beranda</a>
-                <a href="produk.html">Produk</a>
-                <a href="tentang.html">Tentang Kami</a>
-                <a href="kontak.html" class="cta-nav">Kontak & Order</a>
-        </nav>
-        
-        <div class="menu-toggle" id="menuToggle">&#9776;</div> 
-    </div>
-</header>
+    // === 1. TOGGLE MENU MOBILE (Mobile Burger Menu) dan KONTROL BANNER ===
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const resellerBanner = document.getElementById('reseller-notification'); 
 
-<nav class="mobile-nav" id="mobileNav">
-    <a href="index.html">Beranda</a>
-    <a href="produk.html">Produk</a>
-    <a href="tentang.html">Tentang Kami</a>
-    <a href="kontak.html" class="cta-nav-mobile">Kontak & Order</a> 
-</nav>
+    if (menuToggle && mobileNav) {
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('open');
+            
+            if (mobileNav.classList.contains('open')) {
+                if (resellerBanner) {
+                    resellerBanner.classList.add('hide-reseller-banner');
+                }
+                menuToggle.innerHTML = '&#10005;'; 
+            } else {
+                if (resellerBanner) {
+                    resellerBanner.classList.remove('hide-reseller-banner');
+                }
+                menuToggle.innerHTML = '&#9776;'; 
+            }
+        });
 
-    <div id="reseller-notification">
-        <div class="container">
-            🎉 **Reseller Welcome!** Dapatkan Harga Grosir dan Kuantitas Besar. <a href="kontak.html" class="reseller-cta">Daftar Sekarang!</a>
-        </div>
-    </div>
-    <section id="hero" style="padding: 80px 0 50px;">
-        <div class="container fade-in" style="text-align: left;">
-            <h1 style="font-size: 3em; margin-bottom: 0; color: white !important; text-shadow: 0 0 8px rgba(0,0,0,1);">Pusat Bantuan & Pemesanan Produk</h1>
-            <p style="font-size: 1.2em; max-width: 1000px; margin-top: 10px; color: white !important; text-shadow: 0 0 5px rgba(0,0,0,0.8);">Silakan hubungi kami untuk pertanyaan, kritik, saran, atau melakukan pemesanan langsung.</p>
-        </div>
-    </section>
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('open')) {
+                    mobileNav.classList.remove('open');
+                    menuToggle.innerHTML = '&#9776;';
+                    if (resellerBanner) {
+                        resellerBanner.classList.remove('hide-reseller-banner');
+                    }
+                }
+            });
+        });
+    }
 
-    <section id="contact-content" class="light-bg-section">
-        <div class="container">
-            <div class="contact-grid">
-                
-                <div class="contact-form-container">
-                    <h2 style="color: var(--primary-color);">Kirim Pesan Kepada Kami</h2>
-                    
-                    <form action="" method="POST" id="contactForm">
-                        <div class="form-group">
-                            <label for="nama">Nama Lengkap</label>
-                            <input type="text" id="nama" name="nama" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telepon">Nomor Telepon (WhatsApp)</label>
-                            <input type="tel" id="telepon" name="telepon" pattern="[0-9]*" inputmode="numeric" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subjek">Subjek</label>
-                            <input 
-                                type="text" 
-                                id="subjek" 
-                                name="subjek" 
-                                required
-                                placeholder="Contoh: Pesan Produk, Tanya Stok, Daftar Reseller"
-                                >
-                        </div>
-                        <div class="form-group">
-                            <label for="pesan">Pesan / Detail Pesanan</label>
-                            <textarea id="pesan" name="pesan" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="form-button">KIRIM PESAN</button>
-                        
-                        <div id="formStatus" style="margin-top: 15px; font-weight: 600;"></div>
-                        
-                    </form>
-                    </div>
+    // === 2. FADE-IN SCROLL ANIMATION ===
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.5 };
 
-                <div class="contact-info">
-                    <h2 style="color: var(--primary-color);">Atau Hubungi Langsung Layanan Pelanggan</h2>
-                    <p style="font-weight: 600; margin-top: 10px;">Telp: 085894950648 (WhatsApp)</p>
-                    <p style="font-weight: 600; margin-top: 10px;">Email: tokoyunazaf@gmail.com</p>
-                    <p style="font-weight: 600; margin-top: 10px;">Jam Kerja: Senin - Jumat, 09.00 - 17.00 WIB</p>
-                    
-                    <h3 style="margin-top: 30px;">Alamat Kantor</h3>
-                    <p style="font-weight: 600; margin-top: 10px;">Jl. Sudimara, Tangerang Banten 15153.</p>
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('visible');
+                appearOnScroll.unobserve(entry.target);
+            }
+        });
+    }, appearOptions);
 
-                    <a href="https://api.whatsapp.com/send?phone=085894950648&text=Halo%20YUNAZAF,%20saya%20memiliki%20pertanyaan%20tentang%20produk/pemesanan." class="cta-button whatsapp-button" target="_blank" style="margin-top: 20px; display: block; text-align: center;">
-                        PESAN CEPAT VIA WHATSAPP
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4>YUNAZAF</h4>
-                    <p>Solusi Kebersihan Premium untuk keluarga modern. Maksimal, Hemat, Estetik.</p>
-                </div>
-                <div>
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="produk.html">Katalog Produk</a></li>
-                        <li><a href="tentang.html">Komitmen Kami</a></li>
-                        <li><a href="kontak.html">Pusat Bantuan</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Hubungi Kami</h4>
-                    <p>WA: 085894950648</p>
-                    <p>Email: tokoyunazaf@gmail.com</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 @nanagi. Semua Hak Cipta Dilindungi.</p>
-            </div>
-        </div>
-    </footer>
+    // === 3. INISIALISASI SWIPER SLIDER (Jika Ada) ===
+    if (document.querySelector('.mySwiper') && typeof Swiper !== 'undefined') {
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            },
+        });
+    }
+
+    // === 4. HANYA IZINKAN INPUT ANGKA UNTUK TELEPON ===
+    const inputTelepon = document.getElementById('telepon');
+    if (inputTelepon) {
+        inputTelepon.addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    }
     
-    <script src="script.js"></script> 
-</body>
+    // === 5. PENGIRIMAN FORMULIR KE GOOGLE APPS SCRIPT (AJAX) ===
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    
+    // *** KRITIS: PASTE URL WEB APP YANG BENAR DI SINI! ***
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyYIu6s-4-zugpd1xRYtg9HZqQ1jZ-XI8XY48Tt5F8EaheWtAuMz49v_11V5t3lSIJKJQ/exec; 
+    // ******************************************************
 
-</html>
+    if (contactForm && formStatus) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const formData = new FormData(this);
+            formStatus.innerHTML = 'Mengirim... Mohon Tunggu...';
+            formStatus.style.color = '#5B4B8A';
+            
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' 
+            })
+            .then(response => {
+                // Asumsi pengiriman berhasil jika tidak ada error jaringan
+                formStatus.innerHTML = '✅ Pesanan berhasil dikirim! Kami akan menghubungi Anda segera.';
+                formStatus.style.color = '#25D366';
+                contactForm.reset(); 
+            })
+            .catch(error => {
+                formStatus.innerHTML = '❌ Terjadi Kesalahan: Gagal mengirim pesan. Cek koneksi Anda.';
+                formStatus.style.color = 'red';
+                console.error('Error:', error);
+            });
+        });
+    }
+
+});
