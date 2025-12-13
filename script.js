@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
     
-    // *** KRITIS: PASTE URL WEB APP YANG BENAR DI SINI! ***
+    // *** URL WEB APP ANDA YANG SUDAH TERDEPLOY DAN BERIZIN 'ANYONE' ***
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwkzpVFcVmefsicAN7-a6aVUFIF2xrEOqEJA4J0nDFOF474hjjRfF_kLTO7FGQAhUx_ug/exec'; 
     // ******************************************************
 
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mode: 'no-cors' 
             })
             .then(response => {
-                // Asumsi pengiriman berhasil jika tidak ada error jaringan
+                // Asumsi pengiriman berhasil karena masalah CORS di Apps Script
                 formStatus.innerHTML = '✅ Pesanan berhasil dikirim! Kami akan menghubungi Anda segera.';
                 formStatus.style.color = '#25D366';
                 contactForm.reset(); 
@@ -121,4 +121,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
