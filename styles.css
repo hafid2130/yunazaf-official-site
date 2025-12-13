@@ -376,9 +376,10 @@ section {
     font-weight: 600;
 }
 .contact-form input[type="text"],
-.contact-form input[type="email"],
+/* TAMBAHKAN TYPE="TEL" DI SINI */
+.contact-form input[type="tel"], 
 .contact-form textarea {
-    width: 100%;
+    width: 100%; /* KRITIS: Ini yang memastikan lebar penuh */
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -386,6 +387,7 @@ section {
     transition: border-color 0.3s;
     font-family: inherit;
     font-size: 1em;
+}
 }
 .contact-form textarea {
     min-height: 150px;
@@ -487,3 +489,4 @@ footer ul li a:hover {
         grid-template-columns: 1fr;
     }
 }
+
