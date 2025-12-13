@@ -3,39 +3,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 1. TOGGLE MENU MOBILE (Mobile Burger Menu) dan KONTROL BANNER ===
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
-    // Ambil elemen banner reseller
     const resellerBanner = document.getElementById('reseller-notification'); 
 
     if (menuToggle && mobileNav) {
         menuToggle.addEventListener('click', () => {
-            // 1. Toggle class 'open' pada mobileNav
             mobileNav.classList.toggle('open');
             
-            // 2. Kontrol tampilan banner reseller
             if (mobileNav.classList.contains('open')) {
-                // Sembunyikan banner saat menu terbuka
                 if (resellerBanner) {
                     resellerBanner.classList.add('hide-reseller-banner');
                 }
-                // Ganti ikon menjadi 'X'
                 menuToggle.innerHTML = '&#10005;'; 
             } else {
-                // Tampilkan kembali banner saat menu tertutup
                 if (resellerBanner) {
                     resellerBanner.classList.remove('hide-reseller-banner');
                 }
-                // Kembali ke ikon Burger
                 menuToggle.innerHTML = '&#9776;'; 
             }
         });
 
-        // Opsional: Menutup menu saat link di klik (hanya untuk mobile)
         document.querySelectorAll('.mobile-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 if (mobileNav.classList.contains('open')) {
                     mobileNav.classList.remove('open');
-                    menuToggle.innerHTML = '&#9776;'; // Kembali ke ikon Burger
-                    // Tampilkan kembali banner setelah menu tertutup
+                    menuToggle.innerHTML = '&#9776;';
                     if (resellerBanner) {
                         resellerBanner.classList.remove('hide-reseller-banner');
                     }
@@ -64,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // === 3. INISIALISASI SWIPER SLIDER (Jika Ada) ===
-    // Memeriksa apakah elemen dengan class 'mySwiper' ada di halaman saat ini
     if (document.querySelector('.mySwiper') && typeof Swiper !== 'undefined') {
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: 1,
@@ -86,4 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     }
+
+    // =========================================================
+    // BARU DITAMBAHKAN:
+    // === 4. HANYA IZINKAN INPUT ANGKA UNTUK TELEPON ===
+    const inputTelepon = document.getElementById('telepon');
+    if (inputTelepon) {
+        inputTelepon.addEventListener('input', function (e) {
+            // Hapus karakter non-digit (non-angka) secara real-time
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    }
+    // =========================================================
+
 });
