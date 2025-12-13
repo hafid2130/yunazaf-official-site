@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 // GANTI DENGAN URL WEB APP YANG ANDA DAPATKAN DI LANGKAH 3
-const WEB_APP_URL = 'https://script.google.com/macros/library/d/1zIdvCEvK_k4H818bhP-303gR2gHPPa_fR6D2BmBEUwEp21ZY4pNoFddm/1'; 
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyYIu6s-4-zugpd1xRYtg9HZqQ1jZ-XI8XY48Tt5F8EaheWtAuMz49v_11V5t3lSIJKJQ/exec'; 
 
 if (contactForm && formStatus) {
     contactForm.addEventListener('submit', function(e) {
@@ -124,5 +124,6 @@ if (contactForm && formStatus) {
         });
     });
 }
+
 
 
