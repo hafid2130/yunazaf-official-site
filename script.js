@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 // GANTI DENGAN URL WEB APP YANG ANDA DAPATKAN DI LANGKAH 3
-const WEB_APP_URL = 'URL_WEB_APP_ANDA_DI_SINI'; 
+const WEB_APP_URL = 'https://script.google.com/macros/library/d/1zIdvCEvK_k4H818bhP-303gR2gHPPa_fR6D2BmBEUwEp21ZY4pNoFddm/1'; 
 
 if (contactForm && formStatus) {
     contactForm.addEventListener('submit', function(e) {
@@ -124,4 +124,5 @@ if (contactForm && formStatus) {
         });
     });
 }
+
 
