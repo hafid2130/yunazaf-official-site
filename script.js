@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formStatus = document.getElementById('formStatus');
     
     // *** KRITIS: PASTE URL WEB APP YANG BENAR DI SINI! ***
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyYIu6s-4-zugpd1xRYtg9HZqQ1jZ-XI8XY48Tt5F8EaheWtAuMz49v_11V5t3lSIJKJQ/exec; 
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwkzpVFcVmefsicAN7-a6aVUFIF2xrEOqEJA4J0nDFOF474hjjRfF_kLTO7FGQAhUx_ug/exec'; 
     // ******************************************************
 
     if (contactForm && formStatus) {
@@ -121,3 +121,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
