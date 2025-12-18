@@ -1,136 +1,28 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak Kami | YUNAZAF</title>
-    <meta name="description" content="Hubungi YUNAZAF untuk pertanyaan, pemesanan grosir, atau layanan pelanggan.">
-    <link rel="canonical" href="https://hafizd2130.github.io/yunazaf-official-site/kontak.html">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> 
-</head>
-<body>
-
-    <header>
-    <div class="container">
-        <h1>YUNAZAF</h1>
-        <nav class="desktop-nav">
-                <a href="index.html">Beranda</a>
-                <a href="produk.html">Produk</a>
-                <a href="tentang.html">Tentang Kami</a>
-                <a href="kontak.html" class="cta-nav">Kontak & Order</a>
-        </nav>
-        
-        <div class="menu-toggle" id="menuToggle">&#9776;</div> 
-    </div>
-</header>
-
-<nav class="mobile-nav" id="mobileNav">
-    <a href="index.html">Beranda</a>
-    <a href="produk.html">Produk</a>
-    <a href="tentang.html">Tentang Kami</a>
-    <a href="kontak.html" class="cta-nav-mobile">Kontak & Order</a> 
-</nav>
-
-    <div id="reseller-notification">
-        <div class="container">
-            🎉 **Reseller Welcome!** Dapatkan Harga Grosir dan Kuantitas Besar. <a href="kontak.html" class="reseller-cta">Daftar Sekarang!</a>
-        </div>
-    </div>
-    <section id="hero" style="padding: 80px 0 50px;">
-        <div class="container fade-in" style="text-align: left;">
-            <h1 style="font-size: 3em; margin-bottom: 0; color: white !important; text-shadow: 0 0 8px rgba(0,0,0,1);">Pusat Bantuan & Pemesanan Produk</h1>
-            <p style="font-size: 1.2em; max-width: 1000px; margin-top: 10px; color: white !important; text-shadow: 0 0 5px rgba(0,0,0,0.8);">Silakan hubungi kami untuk pertanyaan, kritik, saran, atau melakukan pemesanan langsung.</p>
-        </div>
-    </section>
-
-    <section id="contact-content" class="light-bg-section">
-        <div class="container">
-            <div class="contact-grid">
-                
-                <div class="contact-form-container">
-                    <h2 style="color: var(--primary-color);">Kirim Pesan Kepada Kami</h2>
-                    
-                    <form action="" method="POST" id="contactForm" class="contact-form">
-                        
-                        <div class="form-group">
-                            <label for="nama">Nama Lengkap</label>
-                            <input type="text" id="nama" name="nama" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="telepon">Nomor Telepon (WhatsApp)</label>
-                            <input type="tel" id="telepon" name="telepon" pattern="[0-9]*" inputmode="numeric" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subjek">Subjek</label>
-                            <input 
-                                type="text" 
-                                id="subjek" 
-                                name="subjek" 
-                                required
-                                placeholder="Contoh: Pesan Produk, Tanya Stok, Daftar Reseller"
-                            >
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="pesan">Pesan / Detail Pesanan</label>
-                            <textarea id="pesan" name="pesan" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="form-button">KIRIM PESAN</button>
-                        
-                        <div id="formStatus" style="margin-top: 15px; font-weight: 600;"></div>
-                        
-                    </form>
-                    </div>
-
-                <div class="contact-info">
-                    <h2 style="color: var(--primary-color);">Atau Hubungi Langsung Layanan Pelanggan</h2>
-                    <p style="font-weight: 600; margin-top: 10px;">Telp: 085894950648 (WhatsApp)</p>
-                    <p style="font-weight: 600; margin-top: 10px;">Email: tokoyunazaf@gmail.com</p>
-                    <p style="font-weight: 600; margin-top: 10px;">Jam Kerja: Senin - Jumat, 09.00 - 17.00 WIB</p>
-                    
-                    <h3 style="margin-top: 30px;">Alamat Kantor</h3>
-                    <p style="font-weight: 600; margin-top: 10px;">Jl. Sudimara, Tangerang Banten 15153.</p>
-
-                    <a href="https://api.whatsapp.com/send?phone=085894950648&text=Halo%20YUNAZAF,%20saya%20memiliki%20pertanyaan%20tentang%20produk/pemesanan." class="cta-button whatsapp-button" target="_blank" style="margin-top: 20px; display: block; text-align: center;">
-                        PESAN CEPAT VIA WHATSAPP
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h4>YUNAZAF</h4>
-                    <p>Solusi Kebersihan Premium untuk keluarga modern. Maksimal, Hemat, Estetik.</p>
-                </div>
-                <div>
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="produk.html">Katalog Produk</a></li>
-                        <li><a href="tentang.html">Komitmen Kami</a></li>
-                        <li><a href="kontak.html">Pusat Bantuan</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4>Hubungi Kami</h4>
-                    <p>WA: 085894950648</p>
-                    <p>Email: tokoyunazaf@gmail.com</p>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 @nanagi. Semua Hak Cipta Dilindungi.</p>
-            </div>
-        </div>
-    </footer>
+<div class="contact-form-container">
+    <h2 style="color: #5B4B8A;">Kirim Pesan Kepada Kami</h2>
     
-    <script src="script.js"></script> 
-</body>
-
-</html>
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="nama">Nama Lengkap</label>
+            <input type="text" id="nama" name="nama" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="telepon">Nomor Telepon (WhatsApp)</label>
+            <input type="tel" id="telepon" name="telepon" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="subjek">Subjek</label>
+            <input type="text" id="subjek" name="subjek" placeholder="Contoh: Pesan Produk" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="pesan">Pesan / Detail Pesanan</label>
+            <textarea id="pesan" name="pesan" required></textarea>
+        </div>
+        
+        <button type="submit" class="form-button">KIRIM PESAN</button>
+        <div id="formStatus" style="margin-top: 15px; font-weight: bold;"></div>
+    </form>
+</div>
