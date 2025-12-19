@@ -1,139 +1,105 @@
-/* --- BASE STYLES --- */
 :root {
-    --primary-color: #5B4B8A; /* Ungu YUNAZAF */
-    --secondary-color: #E5C39C; /* Gold/Cream */
-    --text-color: #333;
-    --light-bg: #f9f9f9;
+    --primary-color: #5B4B8A;
+    --secondary-color: #C7A17A;
+    --light-bg: #FAF9F6;
+    --dark-text: #333333;
+    --light-text: #fff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Poppins', sans-serif;
+    color: var(--dark-text);
     line-height: 1.6;
-    color: var(--text-color);
+    background-color: var(--light-bg);
+    overflow-x: hidden;
 }
 
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- HEADER & NAV --- */
+/* HEADER */
 header {
-    background: var(--primary-color);
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--light-text);
     padding: 15px 0;
-    position: fixed;
-    width: 100%;
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
+header .container { display: flex; justify-content: space-between; align-items: center; }
+header h1 { color: var(--light-text); font-size: 1.8em; }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.desktop-nav a { color: var(--light-text); margin-left: 20px; font-weight: 400; text-decoration: none; }
+.cta-nav { background-color: var(--secondary-color); color: var(--dark-text) !important; padding: 6px 15px; border-radius: 4px; font-weight: 600 !important; }
 
-header h1 { font-size: 1.5rem; letter-spacing: 2px; }
-
-.desktop-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.cta-nav {
-    background: var(--secondary-color);
-    padding: 8px 15px;
-    border-radius: 5px;
-    color: var(--primary-color) !important;
-}
-
-/* --- CONTACT SECTION --- */
-#contact-content {
-    padding: 120px 0 60px;
-    background: var(--light-bg);
-}
-
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 40px;
-}
-
-/* KOTAK BIRU (FORMULIR) */
-.contact-form-container {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* POLESAN: Font Judul Form diperkecil */
-.form-title {
-    font-size: 1.4rem !important; 
+/* BARU: Pengecilan Font di Kotak Biru & Hijau */
+.form-title-reduced {
+    font-size: 1.3rem !important; /* Diperkecil */
     color: var(--primary-color);
     margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
-.form-group input, .form-group textarea {
+.info-title-reduced {
+    font-size: 1.2rem !important; /* Diperkecil */
+    color: var(--primary-color);
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+/* BARU: Pengecilan Button WhatsApp (Kotak Orange) */
+.whatsapp-button-small {
+    background-color: #25D366 !important;
+    color: white !important;
+    padding: 10px 20px !important; /* Padding dikurangi */
+    font-size: 0.9em !important; /* Ukuran font tombol dikecilkan */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: var(--shadow);
+}
+
+/* FORM STYLING */
+.contact-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 60px 0; }
+.contact-form-container { padding: 30px; background-color: #fff; border-radius: 8px; box-shadow: var(--shadow); }
+.form-group { margin-bottom: 20px; }
+.contact-form label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9em; }
+.contact-form input, .contact-form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-family: inherit;
 }
-
 .form-button {
-    background: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    width: 100%;
+    padding: 12px;
     border: none;
-    padding: 12px 25px;
+    border-radius: 5px;
     font-weight: 700;
     cursor: pointer;
-    border-radius: 5px;
-    width: 100%;
 }
 
-/* KOTAK HIJAU (INFO KONTAK) */
-/* POLESAN: Font Judul Info diperkecil */
-.info-title {
-    font-size: 1.3rem !important;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    line-height: 1.4;
-}
+/* MOBILE NAV & OTHERS */
+.menu-toggle { display: none; cursor: pointer; font-size: 1.5em; color: #fff; }
+.mobile-nav { display: none; background: var(--primary-color); padding: 10px 0; }
+.mobile-nav.open { display: block; }
+.mobile-nav a { display: block; color: #fff; padding: 10px 20px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-.contact-info p { margin-bottom: 10px; font-size: 0.95rem; }
+#reseller-notification { background-color: #FEEFB3; padding: 10px 0; text-align: center; font-size: 0.9em; position: sticky; top: 60px; z-index: 999; }
+.hide-reseller-banner { display: none !important; }
 
-/* KOTAK ORANYE (TOMBOL WHATSAPP) */
-/* POLESAN: Tombol WA diperkecil */
-.whatsapp-btn-small {
-    display: inline-block;
-    background-color: #25D366;
-    color: white;
-    padding: 8px 18px; 
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.85rem; 
-    margin-top: 10px;
-    transition: 0.3s;
-}
+/* HERO */
+#hero { background-color: #5B4B8A; color: white; position: relative; }
+.fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
     .contact-grid { grid-template-columns: 1fr; }
     .desktop-nav { display: none; }
+    .menu-toggle { display: block; }
 }
