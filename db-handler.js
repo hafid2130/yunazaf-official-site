@@ -4,7 +4,7 @@
  */
 const DBHandler = {
     // URL Web App dari Apps Script Anda
-    URL: 'https://script.google.com/macros/s/AKfycbwkzpVFcVmefsicAN7-a6aVUFIF2xrEOqEJA4J0nDFOF474hjjRfF_kLTO7FGQAhUx_ug/exec',
+    URL: 'https://script.google.com/macros/s/AKfycbwQapf43-RUsFISpgPtXNxpxlZ2W7VL3YnwZpgZPfHEEMN2nj8rsk0GDWwPN_EUb0xh/exec',
 
     /**
      * Fungsi untuk mengirim data pesanan
@@ -26,4 +26,5 @@ const DBHandler = {
     }
 
 };
+
 
