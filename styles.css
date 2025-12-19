@@ -1,4 +1,3 @@
-/* --- BASE STYLES --- */
 :root {
     --primary-color: #5B4B8A;
     --secondary-color: #C7A17A;
@@ -8,76 +7,488 @@
     --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--dark-text);
     line-height: 1.6;
     background-color: var(--light-bg);
+    overflow-x: hidden;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-/* --- HEADER & NAVIGATION --- */
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.2;
+}
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.5em; }
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* ================================================= */
+/* HEADER & NAVIGATION */
+/* ================================================= */
 header {
     background-color: var(--primary-color);
     color: var(--light-text);
-    padding: 15px 0;
+    padding: 10px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-}
-header .container { display: flex; justify-content: space-between; align-items: center; }
-header h1 { color: var(--light-text); font-size: 1.8em; }
-
-.desktop-nav a { color: var(--light-text); margin-left: 20px; text-decoration: none; font-size: 0.9rem; }
-.cta-nav { background-color: var(--secondary-color); color: var(--dark-text) !important; padding: 6px 15px; border-radius: 4px; font-weight: 600; }
-
-/* --- POLESAN VISUAL: FONT & BUTTON KECIL --- */
-.form-title-small { font-size: 1.3rem !important; color: var(--primary-color); margin-bottom: 20px; font-weight: 700; }
-.info-title-small { font-size: 1.2rem !important; color: var(--primary-color); margin-bottom: 15px; font-weight: 700; }
-
-.whatsapp-btn-compact {
-    display: inline-block;
-    background-color: #25D366;
-    color: white !important;
-    padding: 8px 18px; 
-    border-radius: 5px;
-    font-size: 0.85rem; 
-    font-weight: 600;
-    text-decoration: none;
     box-shadow: var(--shadow);
 }
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    color: var(--light-text);
+    font-size: 1.8em;
+}
 
-/* --- CONTACT FORM --- */
-.contact-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; padding: 60px 0; }
-.contact-form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: var(--shadow); }
-.form-group { margin-bottom: 15px; }
-.form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; }
-.form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; }
+.desktop-nav {
+    display: flex;
+    align-items: center;
+}
 
-.form-button {
+.desktop-nav a {
+    color: var(--light-text);
+    padding: 6px 15px;
+    margin-right: 20px;
+    font-weight: 400;
+    display: inline-block;
+    white-space: nowrap;
+}
+.desktop-nav a:hover {
+    color: var(--secondary-color);
+}
+
+.cta-nav {
+    /* STYLING TOMBOL CTA */
     background-color: var(--secondary-color);
+    color: var(--dark-text) !important;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    font-size: 0.9em;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-left: 10px;
+    white-space: nowrap;
+}
+.cta-nav:hover {
+    background-color: #DDAA77;
+    transform: translateY(-1px);
+}
+.menu-toggle {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--light-text); 
+}
+
+/* MOBILE NAVIGATION STYLING */
+.mobile-nav {
+    /* KRITIS: Disembunyikan secara default */
+    display: none; 
+    position: absolute;
+    /* TOP disesuaikan ke 60px karena banner akan disembunyikan/di-static */
+    top: 60px; 
+    left: 0;
     width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1001; 
+    padding: 10px 0;
+}
+
+/* KRITIS: Ini yang membuat menu muncul saat JS menambahkan class 'open' */
+.mobile-nav.open {
+    display: block; 
+}
+.mobile-nav a {
+    display: block;
+    color: var(--light-text);
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.mobile-nav a:last-child {
+    border-bottom: none;
+}
+/* Tambahan styling untuk tombol CTA di mobile */
+.cta-nav-mobile {
+    background-color: var(--secondary-color);
+    color: var(--dark-text) !important;
+    padding: 10px 20px !important; 
+    border-radius: 4px;
+    font-weight: 600 !important;
+    font-size: 1em;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+
+/* ================================================= */
+/* NOTIFIKASI RESELLER */
+/* ================================================= */
+#reseller-notification {
+    background-color: #FEEFB3;
+    color: var(--dark-text);
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95em;
+    position: sticky;
+    top: 60px; /* Di bawah header */
+    z-index: 999; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: opacity 0.3s, visibility 0.3s;
+}
+.reseller-cta {
+    color: var(--primary-color) !important;
+    text-decoration: underline;
+    margin-left: 10px;
     font-weight: 700;
+}
+.reseller-cta:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* KRITIS: KELAS UNTUK MENYEMBUNYIKAN BANNER SAAT MENU MOBILE AKTIF */
+.hide-reseller-banner {
+    display: none !important; 
+    opacity: 0 !important;
+    visibility: hidden !important;
+    position: static !important; /* Untuk mengatasi sticky di beberapa browser */
+    height: 0 !important;
+    padding: 0 !important;
+}
+
+/* ================================================= */
+/* SECTIONS UMUM */
+/* ================================================= */
+section {
+    padding: 80px 0;
+}
+.light-bg-section {
+    background-color: var(--light-bg);
+}
+.dark-bg-section {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+}
+.dark-bg-section h2 {
+    color: var(--light-text);
+}
+
+/* HERO SECTION */
+#hero {
+    background-image: url('assets/img/ruangan dapur dkk.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--light-text);
+    text-align: center;
+    padding: 150px 0;
+    position: relative;
+}
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+#hero .container {
+    position: relative;
+    z-index: 2;
+}
+#hero h1 {
+    color: var(--light-text);
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+#hero p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    text-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+
+.cta-button, .form-button {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--dark-text) !important;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    border: none;
     cursor: pointer;
 }
-
-/* --- MOBILE & ANIMATION --- */
-.menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: #fff; }
-.mobile-nav { display: none; background: var(--primary-color); padding: 10px 0; }
-.mobile-nav.open { display: block; }
-.mobile-nav a { display: block; color: #fff; padding: 10px 20px; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-
-.fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-@media (max-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr; }
-    .desktop-nav { display: none; }
-    .menu-toggle { display: block; }
+.cta-button:hover, .form-button:hover {
+    background-color: #DDAA77;
+    transform: translateY(-2px);
 }
+.whatsapp-button {
+    background-color: #25D366 !important;
+    color: white !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+.whatsapp-button:hover {
+    background-color: #128C7E !important;
+}
+
+/* FEATURE SECTION (#why-yunazaf) */
+#why-yunazaf {
+    text-align: center;
+}
+#why-yunazaf h2 {
+    margin-bottom: 50px;
+}
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.feature-card {
+    background-color: var(--light-text);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+.feature-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+.feature-card p {
+    font-size: 0.95em;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* PRODUCT GRID & CARD */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.product-card {
+    background-color: var(--light-text);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 30px;
+    text-align: center;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    margin: 0 auto 15px auto;
+}
+.product-info {
+    flex-grow: 1;
+}
+.product-card h3 {
+    margin-bottom: 5px;
+}
+.product-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* SWIPER CUSTOMIZATION (untuk produk.html) */
+.swiper {
+    padding-bottom: 50px; /* Memastikan ruang untuk pagination dots */
+}
+.swiper-slide {
+    height: auto !important;
+}
+.swiper-slide .product-card {
+    height: 100%;
+}
+.swiper-button-next, .swiper-button-prev {
+    color: var(--primary-color) !important;
+    top: 40%;
+}
+
+
+/* KONTAK SECTION */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+.contact-form-container {
+    padding: 30px;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.contact-form input[type="text"],
+/* TAMBAHKAN TYPE="TEL" DI SINI */
+.contact-form input[type="tel"], 
+.contact-form textarea {
+    width: 100%; /* KRITIS: Ini yang memastikan lebar penuh */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+    transition: border-color 0.3s;
+    font-family: inherit;
+    font-size: 1em;
+}
+}
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+.contact-info p, .contact-info h3 {
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 40px 0 20px 0;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+footer h4 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+footer ul {
+    list-style: none;
+}
+footer ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+footer ul li a:hover {
+    color: var(--light-text);
+}
+.copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+    margin-top: 30px;
+    font-size: 0.85em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ================================================= */
+/* ANIMASI FADE IN UNTUK EFEK SCROLL */
+/* ================================================= */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ================================================= */
+/* MEDIA QUERIES */
+/* ================================================= */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+        margin-left: auto; 
+    }
+    #hero {
+        padding: 100px 0;
+    }
+    #hero h1 {
+        font-size: 2.5em;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+    /* Memastikan notifikasi reseller terlihat jelas di mobile */
+    #reseller-notification {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 2em;
+    }
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+ini .css
