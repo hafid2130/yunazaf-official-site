@@ -1,70 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // 1. TOGGLE MENU MOBILE
+    // 1. MOBILE MENU
     const menuToggle = document.getElementById('menuToggle');
     const mobileNav = document.getElementById('mobileNav');
-    const resellerBanner = document.getElementById('reseller-notification'); 
-
-    if (menuToggle && mobileNav) {
+    if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             mobileNav.classList.toggle('open');
-            if (mobileNav.classList.contains('open')) {
-                if (resellerBanner) resellerBanner.classList.add('hide-reseller-banner');
-                menuToggle.innerHTML = '&#10005;'; 
-            } else {
-                if (resellerBanner) resellerBanner.classList.remove('hide-reseller-banner');
-                menuToggle.innerHTML = '&#9776;'; 
-            }
+            menuToggle.innerHTML = mobileNav.classList.contains('open') ? '&#10005;' : '&#9776;';
         });
     }
 
-    // 2. FADE-IN SCROLL ANIMATION
+    // 2. FADE-IN ANIMATION
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.2 };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
         });
     }, appearOptions);
-
     faders.forEach(fader => appearOnScroll.observe(fader));
 
-    // 3. VALIDASI TELEPON
-    const inputTelepon = document.getElementById('telepon');
-    if (inputTelepon) {
-        inputTelepon.addEventListener('input', function (e) {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        });
-    }
-    
-    // 4. PENGIRIMAN FORM KE GOOGLE APPS SCRIPT
+    // 3. FORM SUBMISSION
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwkzpVFcVmefsicAN7-a6aVUFIF2xrEOqEJA4J0nDFOF474hjjRfF_kLTO7FGQAhUx_ug/exec'; 
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwkzpVFcVmefsicAN7-a6aVUFIF2xrEOqEJA4J0nDFOF474hjjRfF_kLTO7FGQAhUx_ug/exec';
 
-    if (contactForm && formStatus) {
+    if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
+            e.preventDefault();
             const formData = new FormData(this);
-            formStatus.innerHTML = 'Mengirim Pesanan...';
-            formStatus.style.color = '#5B4B8A';
+            formStatus.innerHTML = 'Sedang mengirim...';
             
             fetch(WEB_APP_URL, {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors' 
+                mode: 'no-cors'
             })
             .then(() => {
-                formStatus.innerHTML = '✅ Sukses! Data telah tersimpan di database.';
-                formStatus.style.color = '#25D366';
-                contactForm.reset(); 
+                formStatus.innerHTML = '✅ Pesanan Berhasil Dikirim!';
+                formStatus.style.color = 'green';
+                contactForm.reset();
             })
-            .catch(error => {
-                formStatus.innerHTML = '❌ Gagal mengirim. Cek koneksi Anda.';
+            .catch(() => {
+                formStatus.innerHTML = '❌ Gagal mengirim. Coba lagi.';
                 formStatus.style.color = 'red';
-                console.error('Error:', error);
             });
         });
     }
