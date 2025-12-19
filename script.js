@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formStatus = document.getElementById('formStatus');
     
     // *** URL WEB APP ANDA YANG SUDAH TERDEPLOY DAN BERIZIN 'ANYONE' ***
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwkzpVFcVmefsicAN7-a6aVUFIF2xrEOqEJA4J0nDFOF474hjjRfF_kLTO7FGQAhUx_ug/exec'; 
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwQapf43-RUsFISpgPtXNxpxlZ2W7VL3YnwZpgZPfHEEMN2nj8rsk0GDWwPN_EUb0xh/exec'; 
     // ******************************************************
 
     if (contactForm && formStatus) {
@@ -121,4 +121,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
 
